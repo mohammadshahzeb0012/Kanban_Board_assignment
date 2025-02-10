@@ -1,0 +1,69 @@
+// Mixin for flexible flexbox usage with optional parameters
+@mixin flex($direction: null,
+    $justify: null,
+    $align: null,
+    $wrap: null,
+    $gap: null) {
+    display: flex;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
+
+    @if $justify {
+        justify-content: $justify;
+    }
+
+    @if $align {
+        align-items: $align;
+    }
+
+    @if $wrap {
+        flex-wrap: $wrap;
+    }
+
+    @if $gap {
+        gap: $gap;
+    }
+}
+
+.dev-board-page {
+    width: 100vw;
+    height: 100vh;
+    background: #E5E7EB;
+
+    .dev-board-top {
+        @include flex($align: center, $justify: space-between);
+        padding: 2vw 5vw;
+
+        button {
+            background-color: #2563EB;
+            color: #ffffff;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            padding: 5px 20px;
+            height: 6vh;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+
+        button:not(:hover) {
+            transition: 0.5s;
+        }
+    }
+
+    .dev-board-area {
+        width: 90%;
+        height: 70%;
+        margin: auto;
+        padding-bottom: 2%;
+        @include flex($gap: 20px);
+        overflow-x: scroll;
+
+    }
+}

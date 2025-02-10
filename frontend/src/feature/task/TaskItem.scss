@@ -1,0 +1,93 @@
+// Mixin for flexible flexbox usage with optional parameters
+@mixin flex($direction: null,
+    $justify: null,
+    $align: null,
+    $wrap: null,
+    $gap: null) {
+    display: flex;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
+
+    @if $justify {
+        justify-content: $justify;
+    }
+
+    @if $align {
+        align-items: $align;
+    }
+
+    @if $wrap {
+        flex-wrap: $wrap;
+    }
+
+    @if $gap {
+        gap: $gap;
+    }
+}
+
+.task-item {
+    margin: 10px;
+    border: 1px solid #E5E7EB;
+
+    .task-item-main {
+
+        @include flex($direction: column);
+
+        .task-item-main-top {
+            @include flex($justify: space-between);
+            padding: 15px;
+
+            span:first-child {
+                font-size: 21px;
+                width: 70%;
+                overflow-x: hidden;
+            }
+
+            span:nth-child(2) {
+                font-weight: bold;
+                background: #FEE2E2;
+                color: #DE2626;
+                padding: 4px 10px;
+                border-radius: 2px;
+            }
+        }
+
+        p {
+            padding: 15px;
+            font-size: 21px;
+            color: #4B588B;
+            word-wrap: break-word;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .task-item-date-option {
+            @include flex($justify: space-between, $align: center);
+
+            span {
+                color: #6B7280;
+                font-size: 21px;
+                padding: 15px;
+                font-weight: 600;
+            }
+
+            .task-item-date-option-icons {
+                color: #6B7280;
+                @include flex($align: center, $gap: 5px);
+                transition: 0.3;
+
+                span:first-child:hover {
+                    cursor: pointer;
+                    color: black;
+                }
+
+                span:nth-child(2):hover {
+                    cursor: pointer;
+                    color: #DE2626;
+                }
+            }
+        }
+    }
+}

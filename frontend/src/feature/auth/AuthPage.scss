@@ -1,0 +1,130 @@
+// Mixin for flexible flexbox usage with optional parameters
+@mixin flex($direction: null,
+    $justify: null,
+    $align: null,
+    $wrap: null,
+    $gap: null) {
+    display: flex;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
+
+    @if $justify {
+        justify-content: $justify;
+    }
+
+    @if $align {
+        align-items: $align;
+    }
+
+    @if $wrap {
+        flex-wrap: $wrap;
+    }
+
+    @if $gap {
+        gap: $gap;
+    }
+}
+
+.auth-wrraper {
+    height: 100vh;
+    width: 100vw;
+    @include flex($justify: center, $align: center);
+    background-color: #E5E7EB;
+
+
+    .form-wrraper {
+
+       height: 70vh;
+        width: 30vw;
+        @include flex($direction: column, $justify: space-evenly);
+        /* justify-content: space-between; */
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 2vh;
+
+        .form-head {
+            @include flex($direction: column, $justify: center, $align: center, $gap: 1vh);
+
+            h2 {
+                font-size: 6vh;
+            }
+
+            p {
+                color: #4B72AE;
+                font-weight: 500;
+            }
+        }
+
+        form {
+            @include flex($direction: column, $justify: center, $gap: 2vh);
+            margin: auto;
+            width: 95%;
+
+            .input-wrraper {
+                @include flex($direction: column, $gap: 1vh);
+                display: flex;
+                flex-direction: column;
+                gap: 1vh;
+
+                input {
+                    height: 6vh;
+                    border-radius: 5px;
+                    outline: none;
+                    border-color: #E5E7EB;
+                    padding: 5px 10px;
+                }
+            }
+
+            button {
+                background-color: #2563EB;
+                color: #ffffff;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                padding: 5px;
+                height: 6vh;
+
+            }
+
+            button:hover {
+                opacity: 0.8;
+                cursor: pointer;
+                transition: 0.5s;
+            }
+
+            button:not(:hover) {
+                transition: 0.5s;
+            }
+        }
+
+        .form-bottom {
+            @include flex($direction: column, $justify: center, $align: center, $gap: 3vh);
+
+            p {
+                color: #6B7280;
+                font-weight: 500;
+            }
+
+            span {
+                color: #3B82F6;
+            }
+            span:hover{
+                text-decoration: underline;
+                cursor: pointer;
+                transition: 1s;
+            }
+        }
+    }
+}
+
+@media  screen and (max-width: 600px) {
+    .auth-wrraper{
+        .form-wrraper {
+
+            height: 68vh;
+            width: 90vw;      
+        }
+    }
+}
