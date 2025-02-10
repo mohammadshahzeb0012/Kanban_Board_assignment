@@ -27,8 +27,6 @@ app.use(cors({
     credentials: true
 }));
 
-
-
 // API Routes
 app.use('/api/auth', authRoutes);
 // protected routes
